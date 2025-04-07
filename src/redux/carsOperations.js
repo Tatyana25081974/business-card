@@ -1,7 +1,7 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_KEY = "3669336c28msh0e818a8c7dbb811p1ccaf3jsnce64cc2b044b"; // твій реальний ключ
+const API_KEY = "3669336c28msh0e818a8c7dbb811p1ccaf3jsnce64cc2b044b"; 
 const API_HOST = "car-api2.p.rapidapi.com";
 
 // Асинхронний запит на сервер для отримання марок машин
