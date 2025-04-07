@@ -1,28 +1,26 @@
-import { useDispatch } from 'react-redux';
-import { setFilter } from '../../redux/carsSlice';
-import SearchBar from '../SearchBar/SearchBar';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilter } from '../../redux/carsSlice'; 
+import { selectFilter } from '../../redux/selectors';
 import styles from './SearchForm.module.css';
 
 export default function SearchForm() {
   const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
 
-  const handleChange = (event) => {
-    dispatch(setFilter(event.target.value));
-  };
-
-  const handleClear = () => {
-    dispatch(setFilter(''));
+  const handleChange = (e) => {
+    dispatch(setFilter(e.target.value));
   };
 
   return (
     <form className={styles.form}>
-      <SearchBar
-        value=""
+      <input
+        type="text"
+        value={filter}
         onChange={handleChange}
-        placeholder="Введіть запит для пошуку..."
-        onClear={handleClear}
+        className={styles.input}
+        placeholder="Введіть назву машини для пошуку..."
       />
     </form>
   );
 }
-

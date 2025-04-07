@@ -1,24 +1,73 @@
+/* Стилі обгортки форми */
 .form {
-    margin-bottom: 30px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px auto;
     flex-wrap: wrap;
-    animation: fadeIn 0.6s ease forwards;
+    animation: fadeIn 0.8s ease forwards;
     opacity: 0;
+    /* Для анімації */
 }
 
-/* Коли форма активна */
-.formActive {
-    opacity: 1;
-    transform: translateY(0);
+/* Інпут пошуку */
+.input {
+    width: 300px;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
-/* Анімація появи */
+/* Інпут при фокусі */
+.input:focus {
+    border-color: #ff9900;
+    box-shadow: 0 0 10px #ff9900aa;
+    transform: scale(1.02);
+}
+
+/* Кнопка очистити */
+.clearButton {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+/* Кнопка при наведенні */
+.clearButton:hover {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+    box-shadow: 0 0 12px #ffcc00aa;
+    transform: scale(1.05);
+}
+
+/* Адаптивність для планшетів і телефонів */
+@media (max-width: 768px) {
+    .input {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .clearButton {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+/* Анімація плавної появи */
 @keyframes fadeIn {
     from {
-        transform: translateY(-20px);
+        transform: translateY(20px);
         opacity: 0;
     }
 

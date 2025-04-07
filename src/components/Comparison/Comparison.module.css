@@ -5,75 +5,31 @@
     padding: 20px;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 30px auto 0;
+    /* трішки відступу зверху */
 }
 
-.card {
-    background: linear-gradient(135deg, #5c4033, #b87333);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    color: #f0e68c;
-    box-shadow:
-        0 0 10px #b8733377,
-        0 0 20px #d4af3766,
-        0 0 30px #ffd70055;
-    transition: transform 0.3s, box-shadow 0.3s;
+/* Стиль окремої картки (буде у CarCard.module.css) */
 
-    /* Додаємо анімацію */
-    animation: fadeIn 0.6s ease forwards;
-    opacity: 0;
-    /* Спочатку приховано */
-}
-
-/* При наведенні */
-.card:hover {
-    transform: scale(1.05);
-    box-shadow:
-        0 0 20px #ffd700aa,
-        0 0 40px #d4af37aa;
-}
-
-/* Текст якщо немає машин */
 .empty {
-    color: #c0c0c0;
-    font-size: 20px;
     text-align: center;
-    margin-top: 40px;
+    color: #c0c0c0;
+    font-size: 22px;
+    margin-top: 50px;
 }
 
-/* Анімація появи */
-@keyframes fadeIn {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Адаптивність */
+/* Адаптивність для планшетів */
 @media (max-width: 768px) {
     .comparison {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         padding: 15px;
     }
-
-    .card {
-        padding: 16px;
-    }
 }
 
+/* Адаптивність для телефонів */
 @media (max-width: 480px) {
     .comparison {
         grid-template-columns: 1fr;
         padding: 10px;
-    }
-
-    .card {
-        padding: 12px;
     }
 }

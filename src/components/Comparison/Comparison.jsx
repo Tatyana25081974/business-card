@@ -1,10 +1,20 @@
-import { useSelector } from 'react-redux'; // хук з react-redux, який дозволяє нам витягнути дані з Redux Store прямо в компонент.
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSelectedCars } from '../../redux/selectors';
+import { setEditingCar, deleteCar } from '../../redux/carsSlice';
+import CarCard from '../CarCard/CarCard';
 import styles from './Comparison.module.css';
 
 export default function Comparison() {
-  const selectedCars = useSelector((state) => state.cars.selectedCars);
+  const dispatch = useDispatch();
+  const selectedCars = useSelector(selectSelectedCars);
+
+  const handleEdit = (car) => {
+    dispatch(setEditingCar(car));
+  };
+
+  const handleDelete = (carId) => {
+    dispatch(deleteCar(carId));
+  };
 
   if (selectedCars.length === 0) {
     return <p className={styles.empty}>Виберіть машини для порівняння!</p>;
@@ -12,13 +22,13 @@ export default function Comparison() {
 
   return (
     <div className={styles.comparison}>
-      {selectedCars.map((car) => (
-        <div key={car.id} className={styles.card}>
-          <h3>{car.name}</h3>
-          <p>Engine: {car.engine}</p>
-          <p>Power: {car.power}</p>
-          <p>Max Speed: {car.maxSpeed}</p>
-        </div>
+      {selectedCars.map(car => (
+        <CarCard
+          key={car.id}
+          car={car}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       ))}
     </div>
   );

@@ -1,41 +1,40 @@
+
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilteredMakes } from '../../redux/selectors';
+import { selectFilteredCars, selectSelectedCars } from '../../redux/selectors';
 import { selectCar } from '../../redux/carsSlice';
 import styles from './CarList.module.css';
 
 export default function CarList() {
   const dispatch = useDispatch();
-  const filteredMakes = useSelector(selectFilteredMakes);
-  const selectedCars = useSelector(state => state.cars.selectedCars); // ➔ додаємо
+  const cars = useSelector(selectFilteredCars);
+  const selectedCars = useSelector(selectSelectedCars);
 
-  const handleSelect = (make) => {
-    if (selectedCars.length >= 3) {
-      alert('Ви вже вибрали максимум 3 машини для порівняння!');
-      return; // ➔ Зупиняємо якщо вже 3 машини
+  const handleSelect = (car) => {
+    if (selectedCars.some(selected => selected.id === car.id)) {
+      alert('Ця машина вже обрана!');
+      return;
     }
-
-    const car = {
-      id: make.id,
-      name: make.name,
-      engine: make.engine || 'Unknown',
-      power: make.power || 'Unknown',
-      maxSpeed: make.maxSpeed || 'Unknown',
-    };
+    if (selectedCars.length >= 3) {
+      alert('Ви можете вибрати тільки 3 машини для порівняння!');
+      return;
+    }
     dispatch(selectCar(car));
   };
 
-  if (filteredMakes.length === 0) {
-    return <p className={styles.empty}>Авто не знайдено</p>;
+  if (cars.length === 0) {
+    return <p className={styles.empty}>Автомобілі не знайдені</p>;
   }
 
   return (
     <ul className={styles.list}>
-      {filteredMakes.map((make) => (
-        <li key={make.id} className={styles.item} onClick={() => handleSelect(make)}>
-          {make.name}
+      {cars.map((car) => (
+        <li key={car.id} className={styles.item}>
+          <h3>{car.name}</h3>
+          <button onClick={() => handleSelect(car)} className={styles.selectButton}>
+            Додати до порівняння
+          </button>
         </li>
       ))}
     </ul>
   );
 }
-

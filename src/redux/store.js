@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'; //Імпортуємо функцію для створення Store
-import carsReducer from './carsSlice'; // імпортуємо наш редʼюсер
+import { configureStore } from '@reduxjs/toolkit'; 
+import carsReducer from './carsSlice'; 
 
 export const store = configureStore({
   reducer: {
-    cars: carsReducer, // додаємо редʼюсер у кореневий стан під ключем cars
+    cars: carsReducer, 
   },
 });
