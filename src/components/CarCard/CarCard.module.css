@@ -1,0 +1,44 @@
+.card {
+    background: linear-gradient(135deg, #5c4033, #b87333);
+    border-radius: 15px;
+    padding: 20px;
+    color: #f0e68c;
+    box-shadow:
+        0 0 10px #b8733377,
+        0 0 20px #d4af3766,
+        0 0 30px #ffd70055;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 20px #ffd700aa,
+        0 0 40px #d4af37aa;
+}
+
+.title {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* Анімація появи */
+@keyframes fadeIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

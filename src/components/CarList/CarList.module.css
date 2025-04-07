@@ -1,0 +1,30 @@
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item {
+    padding: 12px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #5c4033, #b87333);
+    color: #f0e68c;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.item:hover {
+    background: linear-gradient(135deg, #b87333, #ffd700);
+    transform: scale(1.03);
+}
+
+.empty {
+    text-align: center;
+    color: #c0c0c0;
+    font-size: 18px;
+}
